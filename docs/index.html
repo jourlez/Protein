@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complete Whey Protein Isolate Comparison - Updated April 2025</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.6/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs5/2.4.1/responsive.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1400px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .table-container {
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        .mejor-valor {
+            font-weight: bold;
+            color: #27ae60;
+        }
+        .valor-medio {
+            color: #f39c12;
+        }
+        .menor-valor {
+            color: #c0392b;
+        }
+        .destacado {
+            background-color: #ffffd0 !important;
+        }
+        .top-tier {
+            border-left: 4px solid #27ae60;
+        }
+        .new-badge {
+            background-color: #3498db;
+            color: white;
+            font-size: 10px;
+            padding: 2px 5px;
+            border-radius: 3px;
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+        .nota {
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+            line-height: 1.4;
+        }
+        .filters {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .filter-group {
+            margin-bottom: 10px;
+        }
+        .filter-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        @media (max-width: 767px) {
+            .filters {
+                padding: 10px;
+            }
+            .filter-group {
+                margin-bottom: 15px;
+            }
+        }
+        .dt-buttons {
+            margin-bottom: 15px;
+        }
+        .nutritional-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .nutritional-badge {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #555;
+        }
+        .card {
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .card-header {
+            background-color: #2c3e50;
+            color: white;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            padding: 10px 15px;
+        }
+        .btn-outline-primary {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Complete Whey Protein Isolate Comparison</h1>
+            <p class="text-muted">Updated April 2025 - Sortable & Filterable</p>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">Filters & Controls</h5>
+            </div>
+            <div class="card-body">
+                <div class="row filters">
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <div class="filter-title">Protein Type</div>
+                            <select id="type-filter" class="form-select form-select-sm">
+                                <option value="">All Types</option>
+                                <option value="Isolate">Isolate</option>
+                                <option value="Hydrolyzed">Hydrolyzed</option>
+                                <option value="Plant">Plant-Based</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <div class="filter-title">Highlights</div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="top-tier-filter">
+                                <label class="form-check-label" for="top-tier-filter">Top-Tier Products</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="new-filter">
+                                <label class="form-check-label" for="new-filter">New Products</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <div class="filter-title">Dietary Needs</div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="zero-carb-filter">
+                                <label class="form-check-label" for="zero-carb-filter">Zero/Low Carb (<2g)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="zero-sugar-filter">
+                                <label class="form-check-label" for="zero-sugar-filter">Zero Sugar</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="filter-group">
+                            <div class="filter-title">Protein Content</div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="high-protein-filter">
+                                <label class="form-check-label" for="high-protein-filter">High Protein (≥25g)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="high-bcaa-filter">
+                                <label class="form-check-label" for="high-bcaa-filter">High BCAAs (≥6g)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-content-center flex-wrap">
+                    <button id="reset-filters" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-undo-alt"></i> Reset All Filters
+                    </button>
+                    <div class="btn-group export-buttons">
+                        <button class="btn btn-outline-primary" id="export-csv">
+                            <i class="fas fa-file-csv"></i> Export CSV
+                        </button>
+                        <button class="btn btn-outline-primary" id="export-excel">
+                            <i class="fas fa-file-excel"></i> Export Excel
+                        </button>
+                        <button class="btn btn-outline-primary" id="export-pdf">
+                            <i class="fas fa-file-pdf"></i> Export PDF
+                        </button>
+                        <button class="btn btn-outline-primary" id="print-table">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table id="protein-table" class="table table-striped table-bordered table-hover">
+           <thead>
+           <tr>
+           <th>Product</th>
+           <th>Type</th>
+           <th>Protein/Serving</th>
+           <th>Serving Size</th>
+           <th>Calories</th>
+           <th>BCAAs</th>
+           <th>Carbs</th>
+           <th>Fat</th>
+           <th>Sugars</th>
+           <th>Cost/Serving</th>
+           <th>Key Features</th>
+           <th>Potential Drawbacks</th>
+           <th>Certifications/Source</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr class="destacado top-tier" data-new="true">
+           <td><a href="https://www.myprotein.com/sports-nutrition/impact-whey-isolate/10530911.html" target="_blank">Impact Whey Isolate (MyProtein)</a> <span class="new-badge">NEW</span></td>
+           <td>Isolate (CFM)</td>
+           <td class="mejor-valor">26g</td>
+           <td>30g</td>
+           <td>109</td>
+           <td>5.9g</td>
+           <td>0.8g</td>
+           <td>0g</td>
+           <td>0.5g</td>
+           <td>$0.95 (5.5 lb bag)</td>
+           <td>Ultraconcentrated (86% pure protein); CFM (Cross Flow Microfiltration) processed; available in 20+ flavors; rapid digestion ideal for post-workout; sweetened with sucralose and acesulfame K; low carb</td>
+           <td>Contains artificial sweeteners (sucralose, acesulfame K); can have a slightly chemical aftertaste in some flavors; occasional consistency/mixing issues; quality can vary between production batches; packaging sometimes arrives damaged</td>
+           <td>Informed Choice certified; produced in EU/FDA registered facilities with BRC Global Standard for Food Safety certification; gluten-free; leading European sports nutrition company</td>
+           </tr>
+           <tr class="destacado top-tier">
+           <td><a href="https://ultimatenutrition.com/products/iso-sensation-93" target="_blank">Iso Sensation 93 (Ultimate Nutrition)</a></td>
+           <td>Isolate (IsoChill®)</td>
+           <td class="mejor-valor">30g</td>
+           <td>32g</td>
+           <td>130</td>
+           <td>6.3-6.7g</td>
+           <td>1.6g</td>
+           <td>0g</td>
+           <td>&lt;1g</td>
+           <td>$1.85 (5 lb tub)</td>
+           <td>93% pure protein; protease and lactase enzymes for improved digestion; colostrum for gut health; cold-microfiltered (IsoChill®); superior glutamine concentration; creamy texture flavors; multi-phase filtration technology</td>
+           <td>Premium price point (among the most expensive per serving); contains some artificial flavors and sweeteners; strong flavors may be overwhelming for some; occasional digestive discomfort despite enzymes; limited availability in some markets</td>
+           <td>Manufactured in NSF, cGMP, HACCP, ISO 17025 certified facilities (USA); Contains milk-derived immunoglobulins (lactoferrin); formulated by specialized scientists; every batch undergoes quality testing</td>
+           </tr>
+           <tr class="destacado top-tier">
+           <td><a href="https://www.optimumnutrition.com/en-us/Products/Shakes-%26-Powders/PLATINUM-HYDROWHEY%E2%84%A2/p/hydrowhey-optimum-nutrition" target="_blank">Platinum Hydrowhey (ON)</a></td>
+           <td>Hydrolyzed</td>
+           <td class="mejor-valor">30g</td>
+           <td>39g</td>
+           <td>140</td>
+           <td>9g</td>
+           <td>2.8g</td>
+           <td>1g</td>
+           <td>1g</td>
+           <td>$2.10 (3.5 lb tub)</td>
+           <td>Highest quality hydrolyzed protein; ultra-fast absorption ideal for post-workout; pre-digested protein peptides; complete amino acid matrix; enriched with additional BCAAs; superior flavor compared to other hydrolyzed proteins</td>
+           <td>Very expensive (premium price point); bitter undertones common in hydrolyzed proteins; contains artificial sweeteners; higher carb content than many competitors; relatively large serving size needed (39g); some users report unpleasant aftertaste</td>
+           <td>World's #1 protein brand; True Strength® standards; produced in FDA-registered GMP facilities; patented HYDROWHEY® protein; multiple award winner; Informed-Choice certified</td>
+           </tr>
+           <tr class="top-tier" data-new="true">
+           <td><a href="https://puori.com/products/pw1-whey-protein-bourbon-vanilla?variant=43020536676445" target="_blank">PW1 Pure Whey Protein (Puori)</a> <span class="new-badge">NEW</span></td>
+           <td>Isolate</td>
+           <td>21g</td>
+           <td>30g</td>
+           <td>128</td>
+           <td>5.8g</td>
+           <td>1g</td>
+           <td>0.7g</td>
+           <td>0g</td>
+           <td>$1.90 (2.2 lb bag)</td>
+           <td>90% pure protein isolate; minimal low-temperature processing to preserve native nutrients; ultraclean ingredient list (max 5 ingredients per flavor); no artificial sweeteners; flavored with real vanilla and organic cocoa; highly digestible</td>
+           <td>Significantly higher price point than competitors; limited flavor selection; less widely available than mainstream brands; subtle flavor profile (too mild for some); higher fat content than some pure isolates; premium packaging increases environmental footprint</td>
+           <td>Whey isolate from Northern European grass-fed cows (100% pasture-fed); Non-GMO Project Verified certified; free from antibiotics, pesticides and hormones; each batch tested for 200+ residues and pesticides; radical transparency; focus on environmental sustainability</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.transparentlabs.com/products/proteinseries-100-grass-fed-whey-protein-isolate" target="_blank">Transparent Labs Whey Isolate</a></td>
+           <td>Isolate</td>
+           <td>28g</td>
+           <td>32g</td>
+           <td>130</td>
+           <td>5.9g</td>
+           <td>1g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.70 (5 lb bag)</td>
+           <td>100% pure isolate (no blends); free from artificial ingredients, colors or artificial sweeteners; sweetened with stevia; formulated for high-performance athletes; complete amino acid profile; gluten-free and preservative-free</td>
+           <td>Higher price point than average; stevia aftertaste that some find unpleasant; limited availability in physical retail stores; sometimes clumps when mixing; container size smaller than industry standard; shipping restrictions to some countries</td>
+           <td>Grass-fed whey source; Non-GMO certification; hormone-free (rBGH/rBST); antibiotic-free; third-party tested for purity; total transparency in ingredients (clean label)</td>
+           </tr>
+           <tr>
+           <td><a href="https://allmaxnutrition.com/products/isoflex-100-pure-whey-protein-powder" target="_blank">Isoflex (Allmax)</a></td>
+           <td>Isolate (CFM® & Ion Exchange)</td>
+           <td>27g</td>
+           <td>30g</td>
+           <td>120</td>
+           <td>5.5g</td>
+           <td>1.6g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.65 (5 lb tub)</td>
+           <td>Hybrid CFM® filtration technology (micro, ultra and nano); 90% pure protein by weight; enriched with natural BCAAs; lactose-free; acesulfame-K free; ion-exchange extraction process; superior taste tested; ideal for definition diets</td>
+           <td>Contains artificial flavors and sweeteners; inconsistent mixing in cold liquids; relatively expensive; some flavors rated poorly by consumers; can cause digestive issues in sensitive individuals despite being lactose-free; intense sweetness in some flavors</td>
+           <td>Certified filtration process; FSSC 22000 production facilities; gluten-free; sugar-free; verified for banned substances (sports); Canadian innovation in protein purification; each batch numbered and traceable</td>
+           </tr>
+           <tr data-new="true">
+           <td><a href="https://promixnutrition.com/products/vanilla-whey-protein-isolate-powder?variant=39978532667481" target="_blank">Promix Whey Isolate</a> <span class="new-badge">NEW</span></td>
+           <td>Isolate (Cold Microfiltered)</td>
+           <td>30g</td>
+           <td>39g</td>
+           <td>150</td>
+           <td>6.2g</td>
+           <td>7g</td>
+           <td>5g</td>
+           <td>6g</td>
+           <td>$1.75 (5 lb bag)</td>
+           <td>Cold-microfiltered to preserve intact proteins; ultra-clean label (no lecithins, gums, flavors or colorants); awarded by "Clean Label Project" (exceptional purity for heavy metals); high glutathione concentration; ideal for digestive sensitivities</td>
+           <td>Very bland taste profile (unflavored version particularly challenging); higher price point; limited flavor selection; can be difficult to find in retail; requires vigorous blending to mix completely; texture can be slightly chalky; subscription model criticized by some customers</td>
+           <td>Sourced from California family farms with grass-fed cows; USDA Organic certified; non-GMO; antibiotic and hormone-free; third-party certified gluten-free; independent testing for heavy metals and toxins</td>
+           </tr>
+           <tr>
+           <td><a href="https://swolverine.com/products/whey-protein-isolate" target="_blank">Swolverine Whey Isolate</a></td>
+           <td>Isolate (Cold Pressed)</td>
+           <td>26g</td>
+           <td>31g</td>
+           <td>110</td>
+           <td>6.1g</td>
+           <td>1g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.85 (4 lb tub)</td>
+           <td>ProHydrolase® enzyme blend (10 mg) to improve protein absorption by 10%; cold-pressed, micro-filtered to preserve undenatured proteins; free from artificial flavors/sweeteners/colors; 90% protein by weight</td>
+           <td>Significantly higher cost than mainstream brands; limited flavor range; occasional stock issues; enzyme addition adds cost without proven effectiveness for everyone; stevia aftertaste in some flavors; needs very thorough mixing to prevent clumping</td>
+           <td>100% grass-fed and pasture-raised whey; rBGH hormone-free and antibiotic-free; Non-GMO certified; gluten-free; cGMP manufacturing; founded by athletes; superior quality control standards</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.superior14.com/product-page/iso-definition" target="_blank">ISO Definition (Superior 14)</a></td>
+           <td>Isolate with Peptides</td>
+           <td>25g</td>
+           <td>32g</td>
+           <td>132</td>
+           <td>5.1g</td>
+           <td>2.6g</td>
+           <td>2.5g</td>
+           <td>0g</td>
+           <td>$1.65 (4.4 lb tub)</td>
+           <td>Special formula for muscle definition; blend of isolate and rapid-absorption peptides; fortified with CLA, L-carnitine, green tea and green coffee extracts for metabolic support; 86% protein; anti-catabolism matrix</td>
+           <td>Contains artificial sweeteners; added ingredients (green tea, coffee extracts) may cause sensitivity in some users; higher stimulant content than typical proteins; limited market availability; European formulation differs from US expectations; somewhat chalky texture</td>
+           <td>Produced in European Union under strict EU quality standards; gluten-free; purity tests for each batch; complies with anti-doping regulations; company with 20+ years experience in sports supplementation</td>
+           </tr>
+           <tr data-new="true">
+           <td><a href="https://legionathletics.com/products/supplements/whey-protein-powder/" target="_blank">Legion Whey+ Isolate</a> <span class="new-badge">NEW</span></td>
+           <td>Isolate</td>
+           <td>22g</td>
+           <td>27g</td>
+           <td>100</td>
+           <td>5.6g</td>
+           <td>2g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.75 (5 lb bag)</td>
+           <td>Hormone, antibiotic and GMO-free whey isolate; natural flavors (extracts from real foods); free from concentrate proteins and artificial sweeteners; high in leucine (2.7g per serving); advanced filtration to remove lactose, fat and cholesterol</td>
+           <td>Premium pricing; stevia-based sweetening creates distinctive aftertaste; limited flavor selection; slightly higher carb content than some competitors; occasional formula changes reported by long-term users; needs thorough mixing to prevent clumping</td>
+           <td>Independent laboratory purity certification (accessible via QR code on each container); batch testing for heavy metals and microbiology; founded by Mike Matthews; backed by scientific evidence; manufactured in NSF cGMP certified facilities; maximum transparency</td>
+           </tr>
+           <tr>
+           <td><a href="https://dymatize.com/iso100" target="_blank">Dymatize ISO100 Hydrolyzed</a></td>
+           <td>Hydrolyzed & Isolate</td>
+           <td>25g</td>
+           <td>32g</td>
+           <td>110</td>
+           <td>5.5g</td>
+           <td>0g</td>
+           <td>1g</td>
+           <td>1g</td>
+           <td>$1.55 (5 lb tub)</td>
+           <td>Hydrolyzed protein for ultra-fast digestion; 5-stage filtration process; less than 1% lactose; available in more than 10 award-winning flavors; instant mixing; 11.8g essential amino acids per serving; ideal for pre/post workout use</td>
+           <td>Contains artificial sweeteners; can have bitter undertones (common in hydrolyzed proteins); premium price point; some flavors rated inconsistently; higher sugar content than some competitors; slight chemical aftertaste reported by some users</td>
+           <td>Informed-Choice certified (banned substance free); manufactured in GMP facilities; tested by independent laboratories; brand used by Olympic and elite athletes; winner of multiple "Protein of the Year" awards</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.theisopurecompany.com/en-us3/Products/Powder/ISOPURE%C2%AE-ZERO-CARB-PROTEIN-UNFLAVORED/p/C101302" target="_blank">Isopure Unflavored</a></td>
+           <td>Isolate (Microfiltration)</td>
+           <td>25g</td>
+           <td>26g</td>
+           <td>100</td>
+           <td>5.5g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.40 (7.5 lb tub)</td>
+           <td>Zero carbohydrates, 100% pure isolate; ideal for ketogenic and low-carb diets; unflavored (perfect for adding to smoothies and recipes); advanced microfiltration process; 25g protein in just 100 calories; free from aspartame, acesulfame-K and sucralose</td>
+           <td>Extremely bland taste (virtually unpalatable alone); requires additional flavoring; higher price than flavored alternatives; doesn't dissolve as well as flavored versions; can have a slightly metallic taste; customers report inconsistent texture between batches</td>
+           <td>Pioneering brand in zero carb proteins; certified purity; total ingredient transparency; unflavored version is kosher certified; gluten and lactose-free; 30+ years in the industry; heavy metal testing for each batch</td>
+           </tr>
+           <tr>
+           <td><a href="https://jackedfactory.com/products/authentic-iso" target="_blank">Authentic ISO (Jacked Factory)</a></td>
+           <td>Isolate</td>
+           <td>25g</td>
+           <td>33g</td>
+           <td>120</td>
+           <td>5.5g (Leu ~2.7g)</td>
+           <td>3g</td>
+           <td>1g</td>
+           <td>1g</td>
+           <td>$1.50 (5 lb bag)</td>
+           <td>No added fillers; instantized for easy mixing; 83% protein by weight; complete amino acid profile; low in carbs and calories; premium flavors developed by experts; perfect lump-free mixing; contains sunflower lecithin (no soy)</td>
+           <td>Limited flavor selection; contains artificial sweeteners; less established brand reputation; occasional stock issues; slightly lower protein percentage than top competitors; some users report mild digestive discomfort; premium pricing</td>
+           <td>100% grass-fed whey isolate; Non-GMO, hormone-free (rBST-free); gluten-free; Kosher/Halal certified for unflavored version; produced in FDA-registered facilities; independent US brand</td>
+           </tr>
+           <tr>
+           <td><a href="https://ruleoneproteins.com/products/r1-protein" target="_blank">R1 Protein (Rule 1)</a></td>
+           <td>Isolate & Hydrolyzed</td>
+           <td>25g</td>
+           <td>31g</td>
+           <td>110</td>
+           <td>6g</td>
+           <td>2g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.60 (5 lb tub)</td>
+           <td>100% isolate and hydrolysate (no concentrate); no gums or fillers; ultra-fast digestion; instantized for easy mixing; complete amino acid profile; Fast-Acting Protein Matrix technology; superior in dissolution and texture</td>
+           <td>Contains artificial flavors and sweeteners; premium pricing strategy; overly sweet flavor profile according to some users; packaging design leads to product waste; limited availability in physical retail locations; some inconsistency between flavor quality</td>
+           <td>Informed-Choice certified (tested for banned substances); 100% whey isolates (no concentrate blends); gluten-free; fat-free; produced in USA under superior standards; created by the founders of EAS and Optimum Nutrition</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.kaged.com/collections/whey-protein/products/whey-protein-isolate?variant=40526006845505&country=CR" target="_blank">Kaged Whey Protein Isolate</a></td>
+           <td>Isolate (Ultra-filtered)</td>
+           <td>25g</td>
+           <td>31g</td>
+           <td>110</td>
+           <td>5.7g</td>
+           <td>2g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.65 (4 lb tub)</td>
+           <td>ProHydrolase® enzyme blend for better digestibility and absorption; ultra-filtered to eliminate lactose (0g sugar); Micropure® quality; no artificial additives; natural flavors enhanced with stevia; premium presentation; ideal for multiple daily servings</td>
+           <td>Higher carb content than many competitors; premium pricing; ProHydrolase® benefits unproven for all users; stevia aftertaste that some dislike; limited flavor selection; requires thorough mixing to prevent clumping; expensive shipping options</td>
+           <td>Informed-Sport certified (tested for 270+ banned substances); Non-GMO, gluten-free; Micropure® quality guarantee (cGMP); brand developed by Kris Gethin (physical transformation expert); "Clean Supplements" philosophy</td>
+           </tr>
+           <tr>
+           <td><a href="https://xwerks.com/products/xwerks-grow" target="_blank">Xwerks Grow</a></td>
+           <td>Isolate (Cold Processed)</td>
+           <td>25g</td>
+           <td>30g</td>
+           <td>110</td>
+           <td>6.1g</td>
+           <td>1g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$2.05 (2 lb bag)</td>
+           <td>Cold-processed whey isolate, micro-filtered to preserve bioactive fractions; low lactose; 100% natural flavors and sweeteners (no artificial); designed for CrossFit athletes and high performance; no preservatives; premium flavors</td>
+           <td>One of the highest price points in category; very limited flavor selection; exclusive online availability; shipping costs can be substantial; strict return policy; container size smaller than industry standard; New Zealand sourcing increases carbon footprint</td>
+           <td>100% New Zealand grass-fed whey (free-range); rBST hormone-free; antibiotic-free; no additives ("paleo-friendly"); popular among elite CrossFit athletes and competitive sports; sourced from A2 type cows</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.muscletech.com/products/isowhey?variant=39783491108960" target="_blank">Platinum Iso-Zero (MuscleTech)</a></td>
+           <td>Isolate (Ion Exchange)</td>
+           <td>25g</td>
+           <td>28g</td>
+           <td>100</td>
+           <td>5.3g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.50 (3.5 lb tub)</td>
+           <td>Ultra-pure isolate by ion exchange (zero lactose, fat or sugar); natural flavors, sweetened with stevia (no artificials); 97% protein purity; instant mixing; provides intact bioactive peptides; advanced micro and ultra filtration</td>
+           <td>Less robust flavor profile than competitors; limited availability in some regions; stevia aftertaste reported by some customers; requires thorough mixing to prevent clumping; smaller container size than industry standard; premium pricing strategy</td>
+           <td>Brand with 25+ years of sports nutrition research; 97% whey isolate purity (86% protein by weight); gluten-free; rBST-free (hormone-free); multiple published clinical studies; company with 100+ nutrition patents</td>
+           </tr>
+           <tr>
+           <td><a href="https://nutrex.com/products/isofit-whey-protein-isolate-powder?variant=39867231404096" target="_blank">IsoFit (Nutrex Research)</a></td>
+           <td>Isolate (CFM)</td>
+           <td>25g</td>
+           <td>32g</td>
+           <td>130</td>
+           <td>5.8g</td>
+           <td>4g</td>
+           <td>1.5g</td>
+           <td>1g</td>
+           <td>$1.55 (5 lb tub)</td>
+           <td>Added digestive enzymes (DigeZyme® blend); cross-flow microfiltered isolate (lactose-free); premium texture and gourmet flavors; contains MCT and inulin for creamy texture; instantaneous (perfect mixing); controlled foam; ideal for creamy shakes</td>
+           <td>Contains artificial flavors and sweeteners; higher fat and sugar content than many isolates; added MCTs may cause digestive distress in some users; very sweet flavor profile; some consistency issues between batches; premium pricing model</td>
+           <td>Gluten-free, lactose-free; Non-GMO; manufactured in GMP certified facilities; brand with 20+ years of supplementation experience; produced in USA; designed by nutrition science specialists; free from amino spiking</td>
+           </tr>
+           <tr>
+           <td><a href="https://jymsupplementscience.com/products/clear-protein-isolate" target="_blank">Iso Clear (JYM)</a></td>
+           <td>Isolate (beverage-type)</td>
+           <td>20g</td>
+           <td>26g</td>
+           <td>90</td>
+           <td>5.5g</td>
+           <td>2g</td>
+           <td>0g</td>
+           <td>0g</td>
+           <td>$1.65 (2.3 lb tub)</td>
+           <td>"Clear" beverage-type protein (non-dairy); 83% purity (strawberry/vanilla), sugar-free; revolutionary liquid protein format (not creamy); ideal for people tired of dairy shakes; refreshing fruit flavors; perfect for summer</td>
+           <td>Unusual liquid consistency may be off-putting to traditional protein users; higher price point; contains artificial sweeteners; limited satiety compared to creamy proteins; flavor intensity varies significantly between options; reported shelf stability issues</td>
+           <td>Developed by Dr. Jim Stoppani (PhD in exercise physiology); backed scientific research; no added amino acids; sustainably sourced ingredients; company founded on scientific principles; popular among collegiate and professional athletes</td>
+           </tr>
+           <tr>
+           <td><a href="https://mutantnation.com/collections/protein/products/iso-surge-5lb-whey-protein-isolate" target="_blank">Mutant Iso Surge</a></td>
+           <td>Isolate & Hydrolyzed</td>
+           <td>25g</td>
+           <td>32g</td>
+           <td>120</td>
+           <td>5.5g</td>
+           <td>2g</td>
+           <td>1.5g</td>
+           <td>0g</td>
+           <td>$1.45 (5 lb tub)</td>
+           <td>Digestive enzyme blend (protease, lactase, lipase); rapid-absorption blend of isolate and hydrolysate; 6.3g EAAs + glutamine; multi-phase use (before, during and after workout); advanced filtration technology; premium gourmet flavors</td>
+           <td>Contains artificial flavors and sweeteners; intense sweetness that some find excessive; aggressive branding unappealing to casual users; limited availability outside specialty stores; premium pricing; some flavors rated poorly by consumers</td>
+           <td>Lab-tested purity (no amino spiking); Non-GMO; gluten-free; produced in Canada (cGMP); hardcore brand for bodybuilders; pharmaceutical-grade quality processes; each batch verified by advanced LC-MS techniques</td>
+           </tr>
+           <tr data-new="true">
+           <td><a href="https://drinkhouji.com/products/houji-plant-protein" target="_blank">Houji Plant Protein</a> <span class="new-badge">NEW</span></td>
+           <td>Plant Isolate (Blend)</td>
+           <td>23g</td>
+           <td>30g</td>
+           <td>112</td>
+           <td>5.5g</td>
+           <td>3g</td>
+           <td>2g</td>
+           <td>0g</td>
+           <td>$2.10 (2.5 lb bag)</td>
+           <td>Premium plant isolate blend (pea, rice and pumpkin seed); complete formula with all essential amino acids; enhanced with probiotics (1 billion CFU); improved digestibility; natural flavors inspired by Japanese tea; 100% plant-based</td>
+           <td>Significantly higher price point than animal-based proteins; lower protein percentage than whey isolates; plant taste notes that some find unpleasant; grainy texture common to plant proteins; limited flavor selection; requires more vigorous mixing than whey</td>
+           <td>USDA and EU organic certifications; Non-GMO verified; Informed-Sport certified; patented fermentation process that increases bioavailability; sustainably sourced ingredients; 100% recyclable packaging; luxury brand focused on sustainability and innovation</td>
+           </tr>
+           <tr>
+           <td><a href="https://www.thorne.com/products/dp/whey-protein-isolate-chocolate" target="_blank">THORNE Whey Protein Isolate</a></td>
+           <td>Isolate (Microfiltered)</td>
+           <td>21g</td>
+           <td>30g</td>
+           <td>100</td>
+           <td>5.5g</td>
+           <td>4g</td>
+           <td>1g</td>
+           <td>2g</td>
+           <td>$2.30 (1.6 lb tub)</td>
+           <td>Medical/clinical grade premium isolate; pharmaceutical purity standards; formulated for elite athletes and medical patients; free from artificial emulsifiers and thickeners; available in chocolate and vanilla; no artificial sweeteners; low in allergens</td>
+           <td>Very expensive (medical-grade pricing); limited flavor selection; minimalist flavor profile that some find too subtle; primarily available through medical channels; smaller container size than sports brands; unfamiliar branding to mainstream athletes</td>
+           <td>Premium clinical-sports brand; NSF Certified for Sport; used by 100+ professional and Olympic teams; official sponsor of various elite sports organizations; tested for 200+ contaminants; pharmaceutical manufacturing (FDA/USP); verified medical-grade quality</td>
+           </tr>
+           <tr data-new="true">
+           <td><a href="https://www.ascentprotein.com/collections/protein-powder/products/vanilla-protein-powder?variant=31917023035466" target="_blank">Ascent Native Fuel Whey Isolate</a> <span class="new-badge">NEW</span></td>
+           <td>Native Whey Isolate</td>
+           <td>25g</td>
+           <td>31g</td>
+           <td>120</td>
+           <td>5.7g</td>
+           <td>2g</td>
+           <td>1g</td>
+           <td>1g</td>
+           <td>$1.75 (4 lb bag)</td>
+           <td>Native whey (filtered directly from milk, not cheese byproduct); minimal processing to maintain protein integrity; rapid digestion; 2.7g leucine per serving; "Cleaner" taste profile; Certified Gluten-Free; no artificial ingredients</td>
+           <td>Premium pricing; limited international availability; native whey benefits unclear for average consumers; milder flavor profile than competitors; higher carb content than some isolates; some users report clumping issues; requires thorough mixing</td>
+           <td>American dairy farms (rBST/rBGH-free); Informed Sport Certified; Made in USA; Official protein of USA Weightlifting; minimal ingredient list; zero artificial ingredients; family-owned company with farm-to-supplement traceability</td>
+           </tr>
+           <tr data-new="true">
+           <td><a href="https://www.livemomentous.com/products/essential-whey-protein?srsltid=AfmBOopEXhYer2U-G2BqcO-AY7z1B8O2QdO5jM-JCS2melmERUu3GSym" target="_blank">Momentous Essential Grass-Fed Whey</a> <span class="new-badge">NEW</span></td>
+           <td>Isolate (Cold-Processed)</td>
+           <td>20g</td>
+           <td>26g</td>
+           <td>90</td>
+           <td>5.1g</td>
+           <td>2g</td>
+           <td>0.5g</td>
+           <td>1g</td>
+           <td>$2.15 (2.5 lb bag)</td>
+           <td>ProHydrolase® enzyme blend for enhanced digestion; Irish grass-fed source (year-round pasture access); cold-processed to preserve protein structures; NSF Certified for Sport; complete EAA profile; clean, minimalist formula</td>
+           <td>Among the most expensive proteins per serving; relatively low protein content per serving (20g); limited flavor selection; subtle flavor profile that some find too mild; primarily available online; smaller packaging size than competitors</td>
+            <td>Certified Climate Neutral; B-Corp certified; sustainably sourced; NSF Certified for Sport; Informed Sport Certified; used by multiple professional sports teams; transparent supply chain; regenerative farming practices; third-party tested for purity</td>
+        </tr>
+        <tr data-new="true">
+            <td><a href="https://shop.kleanathlete.com/isolate-natural-vanilla/12484094.html?utm_medium=organic&utm_source=google&utm_campaign=popup" target="_blank">Klean Isolate</a> <span class="new-badge">NEW</span></td>
+            <td>Pharmaceutical-Grade Isolate</td>
+            <td>20g</td>
+            <td>26g</td>
+            <td>90</td>
+            <td>5.5g</td>
+            <td>3g</td>
+            <td>0g</td>
+            <td>1g</td>
+            <td>$2.15 (2.5 lb bag)</td>
+            <td>Ultra-pure pharmaceutical-grade isolate (84% protein by weight); minimalist formula (just isolate and sunflower lecithin); available unflavored or naturally flavored; designed for drug-tested athletes; highest quality standards; allergen-friendly</td>
+            <td>Very expensive (pharmaceutical pricing model); lower protein content per serving than many competitors (20g); extremely mild flavor even in flavored versions; limited retail availability; smaller container size; primarily targeted at professional athletes rather than general consumers</td>
+            <td>NSF Certified for Sport; Informed Choice certified; every batch tested for 200+ banned substances; formulated specifically for professional athletes; trusted by Olympic teams; medical-grade production facilities; highest purity standards in industry</td>
+        </tr>
+        <tr>
+            <td><a href="https://saschafitness.com/products/sascha-fitness-whey-protein-isolate-vanilla" target="_blank">Sascha Fitness Whey Protein Isolate</a></td>
+            <td>Isolate (CFM)</td>
+            <td>25g</td>
+            <td>33g</td>
+            <td>110</td>
+            <td>5.5g</td>
+            <td>1g</td>
+            <td>0g</td>
+            <td>0g</td>
+            <td>$1.90 (2 lb tub)</td>
+            <td>Clean ingredient profile with natural flavors and stevia; no artificial sweeteners; free from artificial colors; non-GMO sunflower lecithin for mixing; premium influencer-backed brand; cold-processed to maintain protein integrity; rapid absorption</td>
+            <td>Premium price point; limited international distribution; stevia aftertaste may be noticeable; social media/influencer pricing premium; may require vigorous mixing due to natural ingredients; possible shipping limitations to certain countries</td>
+            <td>Fitness influencer-backed brand (Sascha Fitness); manufactured in GMP certified facilities; non-GMO ingredients; popular in Latin American markets; emphasis on clean labeling and natural ingredients; third-party tested for purity</td>
+         </tr>
+         <tr>
+            <td><a href="https://healthical.com/products/proteina-aislada-vegana-sabor-vainilla-horchata" target="_blank">Healthical Vegan Protein Isolate</a></td>
+            <td>Plant Isolate (Blend)</td>
+            <td>30g</td>
+            <td>42g</td>
+            <td>164</td>
+            <td>5.9</td>
+            <td>3g</td>
+            <td>4g</td>
+            <td>0g</td>
+            <td>$3.20 (1.5 lb bag)</td>
+            <td>Premium plant-based isolate with adaptogenic mushroom blend (Reishi, Lion's Mane, Cordyceps); includes digestive enzymes for improved absorption; gluten and lactose free; high leucine content for plant protein; gourmet vanilla-horchata flavor profile; complete amino acid profile</td>
+            <td>Significantly higher price point than most isolates; plant proteins typically have slightly grainier texture; primarily available in Costa Rica with limited global distribution; smaller container size than many competitors; requires thorough mixing</td>
+            <td>Costa Rican health registry (SD-US-24-21660); vegan certified; locally produced specialty product; focus on functional ingredients beyond protein; sustainably sourced ingredients; free from artificial flavors and preservatives</td>
+         </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="nota">
+            <p>Information updated April 2025. Values may vary slightly by batch or flavor. Always check product labels for most recent specific information. Certifications and features may change over time according to each manufacturer's policies.</p>
+            <p>This comparison includes verified information from manufacturer websites and independent research. Products marked "NEW" represent recent market additions or significant formula updates. Top tier products are highlighted with green borders.</p>
+            <p>BCAA content represents combined leucine, isoleucine and valine. Typical ratio is 2:1:1 (leucine:isoleucine:valine). For muscle protein synthesis optimization, look for products with higher leucine content (2.5g+ per serving).</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net/1.13.6/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-bs5/1.13.6/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive/2.4.1/dataTables.responsive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-responsive-bs5/2.4.1/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-buttons/2.4.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-buttons/2.4.1/js/buttons.print.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables.net-buttons-bs5/2.4.1/buttons.bootstrap5.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Parse protein content to number for proper sorting
+            $.fn.dataTable.ext.type.order['protein-pre'] = function(data) {
+                let value = data.match(/(\d+)g/);
+                return value ? parseFloat(value[1]) : 0;
+            };
+            
+            // Initialize DataTable with advanced features
+            var table = $('#protein-table').DataTable({
+                responsive:  false,
+                scrollX: true,
+                order: [[2, 'desc']], // Default sort by protein content (descending)
+                pageLength: 10,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                columnDefs: [
+                    { type: 'protein', targets: [2, 3, 4, 5, 6, 7, 8] }, // Apply custom sorter to numeric columns
+                    { width: "25%", targets: [9, 10] }, // Make feature and certification columns wider
+                    { responsivePriority: 1, targets: 0 }, // Product name is highest priority
+                    { responsivePriority: 2, targets: 2 }, // Protein content is second priority
+                    { responsivePriority: 3, targets: 1 } // Type is third priority
+                ],
+                language: {
+                    search: "<i class='fas fa-search'></i> Search:",
+                    lengthMenu: "Show _MENU_ products",
+                    info: "Showing _START_ to _END_ of _TOTAL_ protein products",
+                    infoFiltered: "(filtered from _MAX_ total products)"
+                },
+                dom: '<"row"<"col-md-6"l><"col-md-6"f>>rtip'
+            });
+            
+            // Type filter
+            $('#type-filter').on('change', function() {
+                let selectedType = $(this).val();
+                if (selectedType) {
+                    table.column(1).search(selectedType).draw();
+                } else {
+                    table.column(1).search('').draw();
+                }
+            });
+            
+            // Top-tier filter
+            $('#top-tier-filter').on('change', function() {
+                if (this.checked) {
+                    table.rows().every(function() {
+                        let tr = $(this.node());
+                        if (!tr.hasClass('top-tier')) {
+                            tr.addClass('d-none');
+                        }
+                    });
+                } else {
+                    table.rows().every(function() {
+                        let tr = $(this.node());
+                        tr.removeClass('d-none');
+                    });
+                }
+                table.draw();
+            });
+            
+            // New products filter
+            $('#new-filter').on('change', function() {
+                if (this.checked) {
+                    table.rows().every(function() {
+                        let tr = $(this.node());
+                        if (tr.data('new') !== true) {
+                            tr.addClass('d-none');
+                        }
+                    });
+                } else {
+                    table.rows().every(function() {
+                        let tr = $(this.node());
+                        tr.removeClass('d-none');
+                    });
+                }
+                table.draw();
+            });
+            
+            // Zero/Low Carb filter
+            $('#zero-carb-filter').on('change', function() {
+                table.column(6).search(this.checked ? '^([01]|0\\.[0-9])g' : '', true, false).draw();
+            });
+            
+            // Zero Sugar filter
+            $('#zero-sugar-filter').on('change', function() {
+                table.column(8).search(this.checked ? '^(0g|0$)' : '', true, false).draw();
+            });
+            
+            // High Protein filter
+            $('#high-protein-filter').on('change', function() {
+                table.column(2).search(this.checked ? '(2[5-9]|30)g' : '', true, false).draw();
+            });
+            
+            // High BCAAs filter
+            $('#high-bcaa-filter').on('change', function() {
+                table.column(5).search(this.checked ? '([6-9]|[1-9][0-9])' : '', true, false).draw();
+            });
+            
+            // Reset all filters
+            $('#reset-filters').on('click', function() {
+                // Reset select filters
+                $('#type-filter').val('');
+                
+                // Reset checkboxes
+                $('#top-tier-filter, #new-filter, #zero-carb-filter, #zero-sugar-filter, #high-protein-filter, #high-bcaa-filter').prop('checked', false);
+                
+                // Clear all column searches
+                table.search('').columns().search('').draw();
+                
+                // Remove any hidden rows
+                table.rows().every(function() {
+                    $(this.node()).removeClass('d-none');
+                });
+                
+                table.draw();
+            });
+            
+            // Export buttons functionality
+            $('#export-csv').on('click', function() {
+                table.button('.buttons-csv').trigger();
+            });
+            
+            $('#export-excel').on('click', function() {
+                table.button('.buttons-excel').trigger();
+            });
+            
+            $('#export-pdf').on('click', function() {
+                table.button('.buttons-pdf').trigger();
+            });
+            
+            $('#print-table').on('click', function() {
+                table.button('.buttons-print').trigger();
+            });
+            
+            // Add invisible buttons for export functionality
+            new $.fn.dataTable.Buttons(table, {
+                buttons: [
+                    {
+                        extend: 'csv',
+                        text: 'Export CSV',
+                        className: 'buttons-csv d-none',
+                        filename: 'Protein_Comparison_April_2025',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'excel',
+                        text: 'Export Excel',
+                        className: 'buttons-excel d-none',
+                        filename: 'Protein_Comparison_April_2025',
+                        exportOptions: {
+                            columns: ':visible'
+                        }
+                    },
+                    {
+                        extend: 'pdf',
+                        text: 'Export PDF',
+                        className: 'buttons-pdf d-none',
+                        filename: 'Protein_Comparison_April_2025',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        orientation: 'landscape',
+                        pageSize: 'LEGAL',
+                        customize: function(doc) {
+                            doc.defaultStyle.fontSize = 8;
+                            doc.styles.tableHeader.fontSize = 9;
+                            doc.content[1].table.widths = Array(doc.content[1].table.body[0].length + 1).join('*').split('');
+                        }
+                    },
+                    {
+                        extend: 'print',
+                        text: 'Print Table',
+                        className: 'buttons-print d-none',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        customize: function(win) {
+                            $(win.document.body).find('table').addClass('table table-striped table-bordered');
+                            $(win.document.body).find('h1').text('Complete Whey Protein Isolate Comparison - April 2025');
+                        }
+                    }
+                ]
+            });
+            
+            table.buttons().container().appendTo('.export-buttons');
+            
+            // Parse numeric columns to handle the 'g' suffix
+            $.fn.dataTable.ext.order['dom-text'] = function(settings, col) {
+                return this.api().column(col, {order:'index'}).nodes().map(function(td, i) {
+                    let text = $(td).text();
+                    if (text) {
+                        let match = text.match(/(\d+(?:\.\d+)?)/);
+                        return match ? parseFloat(match[1]) : 0;
+                    }
+                    return 0;
+                });
+            };
+            
+            // Apply the custom sorter to each numeric column
+            $.each([2, 3, 4, 5, 6, 7, 8], function(i, col) {
+                table.column(col).order('dom-text');
+            });
+        });
+    </script>
+</body>
+</html>
